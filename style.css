@@ -1,0 +1,393 @@
+@font-face {
+    font-family: 'MinecraftFont';
+    src: url('minecraft-text-effect/Minecraft Text Effect/Fonts/Minercraftory.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MinecraftFont', monospace;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: #ffffff;
+    position: relative;
+    background-color: #0d1b2a;
+}
+
+.panorama {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600%;
+    height: 100%;
+    z-index: -2;
+    background-image: url('panorama_0.png'), url('panorama_1.png'), url('panorama_2.png'), url('panorama_3.png'), url('panorama_4.png'), url('panorama_5.png');
+    background-size: 16.666% 100%, 16.666% 100%, 16.666% 100%, 16.666% 100%, 16.666% 100%, 16.666% 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 0%, 20% 0%, 40% 0%, 60% 0%, 80% 0%, 100% 0%;
+    animation: panoScroll 50s linear infinite;
+}
+
+@keyframes panoScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-83.333%); }
+}
+
+.pano-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(13, 27, 42, 0.5), rgba(27, 38, 59, 0.7));
+    z-index: -1;
+    pointer-events: none;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 540px;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.title-wrapper {
+    position: relative;
+    margin-bottom: 3.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.game-logo {
+    width: 125%;
+    max-width: none;
+    height: auto;
+    display: block;
+    filter: drop-shadow(4px 6px 0px rgba(0, 0, 0, 0.8));
+}
+
+.title-gif {
+    position: absolute;
+    bottom: -22px;
+    right: -15px;
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 3px solid #0d1b2a;
+    background-color: rgba(13, 27, 42, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.4), inset 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    width: 100%;
+}
+
+.mc-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: #929293;
+    color: #242424;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 3px solid #242424;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.15), inset -2px -2px 0px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.mc-btn:hover {
+    background-color: #a4a4a4;
+    color: #ffffff;
+    border-color: #464646;
+    box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.3), inset -2px -2px 0px rgba(0, 0, 0, 0.4), 0 6px 12px rgba(75, 76, 78, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Page Container for Split Views (AboutMe & Interests) */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1050px;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.page-title-wrapper .game-logo {
+    width: 320px; 
+    max-width: 85%;
+}
+
+.page-title-wrapper {
+    margin-bottom: 1rem; 
+}
+
+/* Standard Split Inventory Card (Used in AboutME & Interests) */
+.inventory-card {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    height: 480px;
+    background-color: rgba(30, 30, 30, 0.85);
+    border: 4px solid #111111;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: inset 3px 3px 0px #555555, inset -3px -3px 0px #111111, 0 8px 16px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.card-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-left-scrollable {
+    flex: 1.4;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #555555 #111111;
+}
+
+.card-left-scrollable::-webkit-scrollbar {
+    width: 12px;
+}
+
+.card-left-scrollable::-webkit-scrollbar-track {
+    background: #111111;
+    border-radius: 4px;
+}
+
+.card-left-scrollable::-webkit-scrollbar-thumb {
+    background: #555555;
+    border: 2px solid #111111;
+    border-radius: 4px;
+}
+
+.card-left-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #777777;
+}
+
+.card-left-scrollable .card-media,
+.card-left .card-media {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #111111;
+    box-shadow: inset 2px 2px 0px #666666, inset -2px -2px 0px #222222, 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.card-right {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.video-container {
+    width: 100%;
+}
+
+.bio-text {
+    color: #e0e0e0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-shadow: 2px 2px #000000;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1.2rem;
+    border-radius: 6px;
+    border: 2px solid #222222;
+}
+
+.bio-text p {
+    margin-bottom: 0.8rem;
+}
+
+/* Grid Layout Cards (Specific to messages.html using .profile-card) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    justify-items: center;
+}
+
+.inventory-card.profile-card {
+    height: auto;
+    max-width: 360px;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.inventory-card.profile-card:hover {
+    transform: translateY(-8px) scale(1.02) rotate(0.5deg);
+    background-color: rgba(45, 45, 45, 0.95);
+    box-shadow: inset 3px 3px 0px #777777, inset -3px -3px 0px #000000, 0 14px 24px rgba(0, 0, 0, 0.8);
+}
+
+.card-media-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 2px solid #111111;
+}
+
+.translucent-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.inventory-card.profile-card:hover .translucent-img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.card-content h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    text-shadow: 2px 2px #000000;
+}
+
+.card-content .role {
+    color: #55ffff;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px #000000;
+}
+
+.card-content .bio {
+    color: #cccccc;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px #000000;
+}
+
+@keyframes floatBadge {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+.animated-badge {
+    animation: floatBadge 3s ease-in-out infinite;
+}
+
+/* Easter Eggs & Buttons */
+.btn-main {
+    background-color: #373737;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border: 3px solid #111111;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    box-shadow: inset 2px 2px 0px #777777, inset -2px -2px 0px #222222;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    text-shadow: 1px 1px #000000;
+}
+
+.btn-main:hover {
+    background-color: #555555;
+    transform: translateY(-2px);
+    box-shadow: inset 2px 2px 0px #999999, inset -2px -2px 0px #111111;
+}
+
+.easter-egg {
+    position: absolute;
+    font-size: 0.6rem;
+    color: #7f8c8d;
+    text-shadow: 1px 1px #000;
+    opacity: 0.85;
+    transition: opacity 0.3s, color 0.3s;
+    cursor: default;
+    z-index: 2;
+}
+
+.easter-egg:hover {
+    opacity: 1;
+    color: #00e5ff;
+}
+
+.top-left { top: 25px; left: 25px; }
+.top-right { top: 25px; right: 25px; }
+.bottom-left { bottom: 25px; left: 25px; }
+.bottom-right { bottom: 25px; right: 25px; }
+
+@media (max-width: 768px) {
+    .inventory-card {
+        flex-direction: column;
+        height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.inventory-card.about-card {
+    height: auto;
+    min-height: 480px;
+}
+
+.about-card .video-container {
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 3px solid #111111;
+    background-color: #000000;
+    box-shadow: inset 2px 2px 0px #666666, inset -2px -2px 0px #222222, 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.about-card .about-video {
+    width: 100%;
+    height: 100%;
+    max-height: 190px;
+    object-fit: contain;
+    display: block;
+}
